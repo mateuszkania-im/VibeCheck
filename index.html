@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VibeCheck - Polityka Prywatności</title>
+    <title>VibeCheck Privacy Policy</title>
     <style>
       :root {
         --bg: #020617;
         --surface: #0b1220;
-        --surface-2: #111827;
+        --surface2: #111827;
         --text: #e2e8f0;
         --muted: #94a3b8;
         --border: #1e293b;
-        --accent-a: #22f5a5;
-        --accent-b: #3bd1ff;
+        --brandA: #22f5a5;
+        --brandB: #3bd1ff;
       }
 
       * {
@@ -22,16 +22,19 @@
 
       body {
         margin: 0;
-        background: radial-gradient(circle at 10% 10%, rgba(34, 245, 165, 0.12), transparent 36%),
-          radial-gradient(circle at 90% 20%, rgba(59, 209, 255, 0.12), transparent 34%),
+        background:
+          radial-gradient(circle at 10% 10%, rgba(34, 245, 165, 0.14), transparent 38%),
+          radial-gradient(circle at 90% 20%, rgba(59, 209, 255, 0.14), transparent 36%),
           var(--bg);
         color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
         line-height: 1.6;
       }
 
       .wrap {
-        max-width: 920px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 24px 16px 56px;
       }
@@ -40,23 +43,74 @@
         background: linear-gradient(135deg, rgba(34, 245, 165, 0.1), rgba(59, 209, 255, 0.08));
         border: 1px solid var(--border);
         border-radius: 20px;
-        padding: 22px 20px;
-        margin-bottom: 16px;
+        padding: 20px;
+      }
+
+      .badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #001a11;
+        background: linear-gradient(135deg, var(--brandA), var(--brandB));
+        margin-bottom: 10px;
       }
 
       h1 {
-        margin: 0 0 8px;
-        font-size: 30px;
+        margin: 0;
+        font-size: 32px;
+      }
+
+      .meta {
+        color: var(--muted);
+        margin-top: 10px;
+      }
+
+      .lang-bar {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .lang-btn {
+        border: 1px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .lang-btn.active {
+        border-color: transparent;
+        color: #001a11;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--brandA), var(--brandB));
+      }
+
+      .policy {
+        margin-top: 14px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--surface);
+        padding: 18px;
+      }
+
+      .policy.hidden {
+        display: none;
       }
 
       h2 {
-        margin: 0 0 8px;
-        font-size: 21px;
+        font-size: 22px;
+        margin: 0 0 10px;
       }
 
       h3 {
-        margin: 0 0 6px;
         font-size: 16px;
+        margin: 16px 0 6px;
       }
 
       p,
@@ -64,28 +118,9 @@
         color: var(--muted);
       }
 
-      .card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 18px;
-        margin-top: 12px;
-      }
-
       ul {
         margin: 8px 0 0 18px;
         padding: 0;
-      }
-
-      .badge {
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 999px;
-        font-size: 12px;
-        color: #021a16;
-        background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
-        font-weight: 700;
-        margin-bottom: 10px;
       }
 
       a {
@@ -99,136 +134,443 @@
 
       .footer {
         margin-top: 14px;
-        font-size: 13px;
         color: var(--muted);
+        font-size: 13px;
       }
     </style>
   </head>
   <body>
     <main class="wrap">
       <section class="hero">
-        <div class="badge">VibeCheck Privacy</div>
-        <h1>Polityka Prywatności</h1>
+        <div class="badge">VibeCheck Legal</div>
+        <h1>Privacy Policy</h1>
+        <p class="meta">
+          Effective date: <strong>April 8, 2026</strong><br />
+          Controller: <strong>Mcat.one / Mateusz Kania</strong><br />
+          Contact: <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>
+        </p>
+        <div class="lang-bar" role="tablist" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="en" role="tab" aria-selected="true">English</button>
+          <button class="lang-btn" data-lang="pl" role="tab" aria-selected="false">Polski</button>
+          <button class="lang-btn" data-lang="de" role="tab" aria-selected="false">Deutsch</button>
+          <button class="lang-btn" data-lang="fr" role="tab" aria-selected="false">Français</button>
+          <button class="lang-btn" data-lang="it" role="tab" aria-selected="false">Italiano</button>
+        </div>
+      </section>
+
+      <section id="policy-en" class="policy" data-lang-panel="en">
+        <h2>VibeCheck Privacy Policy (English)</h2>
+
+        <h3>1. Scope</h3>
         <p>
-          Data wejścia w życie: <strong>8 kwietnia 2026</strong><br />
-          Administrator: <strong>VibeCheck Team</strong><br />
-          Kontakt: <a href="mailto:support@vibecheck.app">support@vibecheck.app</a>
+          VibeCheck provides anonymous realtime voting rooms, optional participant reflections, AI summaries for closed sessions,
+          and result sharing features.
+        </p>
+
+        <h3>2. Data we process</h3>
+        <ul>
+          <li>Anonymous device identifier (locally generated UUID).</li>
+          <li>Room metadata (name, code, type, timestamps).</li>
+          <li>Votes (value 1-5, timestamps, room reference).</li>
+          <li>Optional reflection text entered by participants.</li>
+          <li>Subscription/entitlement state for Premium features.</li>
+          <li>Technical diagnostics and error/performance telemetry (if enabled).</li>
+        </ul>
+
+        <h3>3. Data we do not collect</h3>
+        <ul>
+          <li>No account registration required.</li>
+          <li>No name, surname, or phone number required.</li>
+          <li>No contact list or GPS location collected.</li>
+          <li>No personal photos/files requested by default.</li>
+        </ul>
+
+        <h3>4. Processing purposes</h3>
+        <ul>
+          <li>Provide core app functionality (create/join room, voting, sync, AI summary).</li>
+          <li>Prevent abuse (for example duplicate votes from one device).</li>
+          <li>Apply plan rules (Free/Premium, summary quota, retention windows).</li>
+          <li>Maintain security, reliability, and diagnostics.</li>
+        </ul>
+
+        <h3>5. Processors and third parties</h3>
+        <ul>
+          <li>Supabase (database, realtime, edge functions).</li>
+          <li>OpenRouter (AI summary generation).</li>
+          <li>Google AdMob (ads for Free plan users).</li>
+          <li>RevenueCat (subscription and entitlement handling).</li>
+          <li>Datadog (monitoring and error telemetry, if enabled).</li>
+        </ul>
+
+        <h3>6. Data retention</h3>
+        <ul>
+          <li>Free plan: default retention up to 7 days.</li>
+          <li>Premium plan: default retention up to 30 days.</li>
+          <li>Premium hosts may extend retention by +30 days according to in-app limits.</li>
+          <li>Expired data is automatically removed by backend cleanup jobs.</li>
+        </ul>
+
+        <h3>7. User rights</h3>
+        <p>
+          Depending on your jurisdiction, you may request access, rectification, deletion, or restriction. Contact us at
+          <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+        </p>
+
+        <h3>8. Security</h3>
+        <p>
+          We use encrypted transport (HTTPS/TLS), backend access controls, and anti-abuse controls. No internet service can
+          guarantee absolute security.
+        </p>
+
+        <h3>9. Children</h3>
+        <p>
+          VibeCheck is not intended for children below the age allowed by local law without guardian supervision. We do not
+          knowingly process children’s personal data.
+        </p>
+
+        <h3>10. Changes</h3>
+        <p>
+          This policy may be updated from time to time. The latest version and effective date are always published on this page.
         </p>
       </section>
 
-      <section class="card">
-        <h2>1. Co robi VibeCheck</h2>
+      <section id="policy-pl" class="policy hidden" data-lang-panel="pl">
+        <h2>Polityka Prywatności VibeCheck (Polski)</h2>
+
+        <h3>1. Zakres</h3>
         <p>
-          VibeCheck umożliwia anonimowe głosowanie nastroju w pokojach (kod 6-znakowy), dodawanie krótkich refleksji i
-          generowanie podsumowań AI po zamknięciu głosowania przez hosta.
+          VibeCheck umożliwia anonimowe głosowanie w pokojach realtime, dodawanie opcjonalnych przemyśleń, generowanie
+          podsumowań AI po zamknięciu sesji i udostępnianie wyników.
         </p>
-      </section>
 
-      <section class="card">
-        <h2>2. Jakie dane przetwarzamy</h2>
+        <h3>2. Jakie dane przetwarzamy</h3>
         <ul>
-          <li>Anonimowy identyfikator urządzenia (losowy UUID przechowywany lokalnie).</li>
-          <li>Dane pokoju: nazwa, kod, typ, daty utworzenia/zamknięcia.</li>
-          <li>Dane głosowania: wartość głosu (1-5), timestamp.</li>
-          <li>Treść refleksji wpisywana przez użytkownika (opcjonalnie).</li>
-          <li>Dane techniczne błędów i wydajności (jeśli monitoring jest aktywny).</li>
-          <li>Dane dot. subskrypcji i entitlementów (jeśli aktywowany Premium).</li>
+          <li>Anonimowy identyfikator urządzenia (UUID generowany lokalnie).</li>
+          <li>Metadane pokoju (nazwa, kod, typ, znaczniki czasu).</li>
+          <li>Głosy (wartość 1-5, czas, powiązanie z pokojem).</li>
+          <li>Opcjonalne przemyślenia wpisane przez uczestników.</li>
+          <li>Status subskrypcji i entitlementów Premium.</li>
+          <li>Dane diagnostyczne i telemetryczne (jeśli monitoring jest włączony).</li>
         </ul>
-      </section>
 
-      <section class="card">
-        <h2>3. Czego nie zbieramy</h2>
+        <h3>3. Czego nie zbieramy</h3>
         <ul>
-          <li>Nie wymagamy rejestracji konta użytkownika.</li>
-          <li>Nie zbieramy imienia i nazwiska ani numeru telefonu.</li>
-          <li>Nie zbieramy list kontaktów ani lokalizacji GPS.</li>
-          <li>Nie prosimy o zdjęcia ani pliki prywatne użytkownika.</li>
+          <li>Brak obowiązku rejestracji konta.</li>
+          <li>Nie wymagamy imienia, nazwiska ani telefonu.</li>
+          <li>Nie pobieramy kontaktów ani lokalizacji GPS.</li>
+          <li>Domyślnie nie prosimy o prywatne zdjęcia ani pliki.</li>
         </ul>
-      </section>
 
-      <section class="card">
-        <h2>4. Cele i podstawy przetwarzania</h2>
+        <h3>4. Cele przetwarzania</h3>
         <ul>
-          <li>Świadczenie funkcjonalności aplikacji (pokój, głosowanie, realtime, AI summary).</li>
-          <li>Zapobieganie nadużyciom (np. wielokrotne głosowanie z jednego urządzenia).</li>
-          <li>Rozliczanie planu Free/Premium, retencji i limitów AI.</li>
-          <li>Bezpieczeństwo i diagnostyka błędów.</li>
+          <li>Realizacja funkcji aplikacji (tworzenie/dołączanie do pokoju, głosowanie, synchronizacja, AI summary).</li>
+          <li>Ochrona przed nadużyciami (np. duplikacją głosów z jednego urządzenia).</li>
+          <li>Egzekwowanie zasad planu (Free/Premium, limity AI, retencja danych).</li>
+          <li>Bezpieczeństwo, niezawodność i diagnostyka.</li>
         </ul>
+
+        <h3>5. Procesorzy i podmioty zewnętrzne</h3>
+        <ul>
+          <li>Supabase (baza danych, realtime, edge functions).</li>
+          <li>OpenRouter (generowanie podsumowań AI).</li>
+          <li>Google AdMob (reklamy dla planu Free).</li>
+          <li>RevenueCat (obsługa subskrypcji i entitlementów).</li>
+          <li>Datadog (monitoring i telemetryka błędów, jeśli aktywne).</li>
+        </ul>
+
+        <h3>6. Retencja danych</h3>
+        <ul>
+          <li>Free: domyślnie do 7 dni.</li>
+          <li>Premium: domyślnie do 30 dni.</li>
+          <li>Host Premium może przedłużyć retencję o +30 dni zgodnie z limitami w aplikacji.</li>
+          <li>Dane po wygaśnięciu retencji usuwane są automatycznie przez joby backendowe.</li>
+        </ul>
+
+        <h3>7. Prawa użytkownika</h3>
         <p>
-          Podstawą przetwarzania jest wykonanie usługi oraz uzasadniony interes administratora (stabilność i bezpieczeństwo
-          usługi). W zakresie reklam/pomiaru może być wymagane dodatkowe pozwolenie systemowe lub zgoda zależnie od
-          platformy i regionu.
+          W zależności od kraju masz prawo do dostępu, sprostowania, usunięcia lub ograniczenia przetwarzania danych.
+          Kontakt: <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
         </p>
-      </section>
 
-      <section class="card">
-        <h2>5. Dostawcy (procesorzy)</h2>
-        <ul>
-          <li>Supabase - baza danych, realtime, edge functions.</li>
-          <li>OpenRouter - generowanie podsumowań AI na żądanie hosta.</li>
-          <li>Google AdMob - reklamy w planie Free.</li>
-          <li>RevenueCat - obsługa statusu subskrypcji Premium.</li>
-          <li>Datadog - monitoring i logi techniczne (jeśli włączony).</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>6. Retencja danych</h2>
-        <ul>
-          <li>Plan Free: historia i dane sesji przechowywane domyślnie do 7 dni.</li>
-          <li>Plan Premium: historia i dane sesji przechowywane domyślnie do 30 dni.</li>
-          <li>Premium host może przedłużyć retencję o kolejne 30 dni zgodnie z limitami aplikacji.</li>
-          <li>Dane są usuwane automatycznie przez zadania cleanup po upływie retencji.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>7. Twoje prawa</h2>
-        <ul>
-          <li>Prawo dostępu do informacji o przetwarzaniu.</li>
-          <li>Prawo żądania usunięcia danych przypisanych do pokoju/sesji (w granicach technicznych usługi).</li>
-          <li>Prawo do ograniczenia przetwarzania i sprzeciwu w przypadkach przewidzianych prawem.</li>
-          <li>Prawo wniesienia skargi do właściwego organu nadzorczego.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>8. Bezpieczeństwo</h2>
+        <h3>8. Bezpieczeństwo</h3>
         <p>
-          Używamy szyfrowanego transportu (HTTPS/TLS), kontroli dostępu po stronie backendu oraz mechanizmów ograniczających
-          nadużycia. Mimo to żadna usługa online nie daje gwarancji 100% bezpieczeństwa.
+          Stosujemy HTTPS/TLS, kontrolę dostępu po stronie backendu i mechanizmy antynadużyciowe. Żadna usługa internetowa nie
+          daje gwarancji 100% bezpieczeństwa.
         </p>
-      </section>
 
-      <section class="card">
-        <h2>9. Dzieci</h2>
+        <h3>9. Dzieci</h3>
         <p>
-          Aplikacja nie jest kierowana do dzieci poniżej wieku wymaganego lokalnym prawem bez nadzoru opiekuna. Nie
+          Aplikacja nie jest kierowana do dzieci poniżej wieku dopuszczonego lokalnym prawem bez nadzoru opiekuna. Nie
           przetwarzamy świadomie danych osobowych dzieci.
         </p>
-      </section>
 
-      <section class="card">
-        <h2>10. Zmiany polityki</h2>
+        <h3>10. Zmiany polityki</h3>
         <p>
-          Polityka może być okresowo aktualizowana. Najnowsza wersja i data wejścia w życie są zawsze publikowane pod tym
-          adresem URL.
+          Polityka może być okresowo aktualizowana. Najnowsza wersja i data obowiązywania są zawsze publikowane na tej stronie.
         </p>
       </section>
 
-      <section class="card">
-        <h2>English Summary</h2>
+      <section id="policy-de" class="policy hidden" data-lang-panel="de">
+        <h2>Datenschutzerklärung VibeCheck (Deutsch)</h2>
+
+        <h3>1. Geltungsbereich</h3>
         <p>
-          VibeCheck processes minimal, mostly anonymous data required to run realtime voting rooms and AI summaries. Free plan
-          stores session history for up to 7 days, Premium for up to 30 days with optional extension according to plan rules.
-          We use processors such as Supabase, OpenRouter, AdMob, RevenueCat and optionally Datadog.
+          VibeCheck ermöglicht anonyme Echtzeit-Abstimmungen in Räumen, optionale Kommentare, KI-Zusammenfassungen nach
+          Schließung einer Sitzung sowie das Teilen von Ergebnissen.
         </p>
+
+        <h3>2. Welche Daten wir verarbeiten</h3>
+        <ul>
+          <li>Anonyme Geräte-ID (lokal erzeugte UUID).</li>
+          <li>Raum-Metadaten (Name, Code, Typ, Zeitstempel).</li>
+          <li>Abstimmungen (Wert 1-5, Zeit, Raumbezug).</li>
+          <li>Optionale Texteingaben der Teilnehmenden.</li>
+          <li>Abonnement- und Entitlement-Status für Premium.</li>
+          <li>Technische Diagnose- und Telemetriedaten (falls aktiviert).</li>
+        </ul>
+
+        <h3>3. Welche Daten wir nicht erheben</h3>
+        <ul>
+          <li>Keine Registrierung erforderlich.</li>
+          <li>Kein Name, Nachname oder Telefonnummer erforderlich.</li>
+          <li>Keine Kontakte oder GPS-Standortdaten.</li>
+          <li>Keine privaten Fotos/Dateien im Standardablauf.</li>
+        </ul>
+
+        <h3>4. Verarbeitungszwecke</h3>
+        <ul>
+          <li>Bereitstellung der App-Funktionen (Raum, Abstimmung, Sync, KI-Zusammenfassung).</li>
+          <li>Missbrauchsschutz (z. B. doppelte Abstimmungen pro Gerät).</li>
+          <li>Umsetzung von Free/Premium-Regeln, Quoten und Aufbewahrungsfristen.</li>
+          <li>Sicherheit, Stabilität und Fehlerdiagnose.</li>
+        </ul>
+
+        <h3>5. Auftragsverarbeiter und Drittanbieter</h3>
+        <ul>
+          <li>Supabase (Datenbank, Realtime, Edge Functions).</li>
+          <li>OpenRouter (KI-Zusammenfassungen).</li>
+          <li>Google AdMob (Werbung im Free-Plan).</li>
+          <li>RevenueCat (Abonnement- und Entitlement-Verwaltung).</li>
+          <li>Datadog (Monitoring/Fehlertelemetrie, falls aktiviert).</li>
+        </ul>
+
+        <h3>6. Speicherfristen</h3>
+        <ul>
+          <li>Free: standardmäßig bis zu 7 Tage.</li>
+          <li>Premium: standardmäßig bis zu 30 Tage.</li>
+          <li>Premium-Hosts können gemäß App-Limits um +30 Tage verlängern.</li>
+          <li>Abgelaufene Daten werden automatisch per Backend-Cleanup entfernt.</li>
+        </ul>
+
+        <h3>7. Nutzerrechte</h3>
         <p>
-          Contact for privacy requests: <a href="mailto:support@vibecheck.app">support@vibecheck.app</a>
+          Je nach Rechtsraum haben Sie Rechte auf Auskunft, Berichtigung, Löschung oder Einschränkung. Kontakt:
+          <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+        </p>
+
+        <h3>8. Sicherheit</h3>
+        <p>
+          Wir verwenden HTTPS/TLS, Zugriffskontrollen im Backend und Schutzmechanismen gegen Missbrauch. Absolute Sicherheit
+          kann kein Internetdienst garantieren.
+        </p>
+
+        <h3>9. Kinder</h3>
+        <p>
+          VibeCheck richtet sich nicht an Kinder unter dem lokal zulässigen Alter ohne Aufsicht. Wir verarbeiten wissentlich
+          keine personenbezogenen Daten von Kindern.
+        </p>
+
+        <h3>10. Änderungen</h3>
+        <p>
+          Diese Datenschutzerklärung kann aktualisiert werden. Die jeweils aktuelle Version mit Datum ist auf dieser Seite
+          verfügbar.
         </p>
       </section>
 
-      <p class="footer">© 2026 VibeCheck Team. All rights reserved.</p>
+      <section id="policy-fr" class="policy hidden" data-lang-panel="fr">
+        <h2>Politique de Confidentialité VibeCheck (Français)</h2>
+
+        <h3>1. Portée</h3>
+        <p>
+          VibeCheck permet des votes anonymes en temps réel, des commentaires optionnels, des résumés IA après clôture d’une
+          session et le partage de résultats.
+        </p>
+
+        <h3>2. Données traitées</h3>
+        <ul>
+          <li>Identifiant appareil anonyme (UUID généré localement).</li>
+          <li>Métadonnées de room (nom, code, type, horodatage).</li>
+          <li>Votes (valeur 1-5, horodatage, référence room).</li>
+          <li>Commentaires optionnels des participants.</li>
+          <li>État d’abonnement et d’entitlement Premium.</li>
+          <li>Télémétrie technique/erreurs (si activée).</li>
+        </ul>
+
+        <h3>3. Données non collectées</h3>
+        <ul>
+          <li>Aucune inscription obligatoire.</li>
+          <li>Aucun nom, prénom ou numéro de téléphone requis.</li>
+          <li>Aucune collecte des contacts ni du GPS.</li>
+          <li>Aucun fichier/photo personnel demandé par défaut.</li>
+        </ul>
+
+        <h3>4. Finalités</h3>
+        <ul>
+          <li>Fournir les fonctionnalités de l’app (room, vote, sync, résumé IA).</li>
+          <li>Prévenir les abus (ex. votes dupliqués depuis un même appareil).</li>
+          <li>Appliquer les règles Free/Premium, quotas IA et rétention.</li>
+          <li>Assurer sécurité, stabilité et diagnostic.</li>
+        </ul>
+
+        <h3>5. Sous-traitants et tiers</h3>
+        <ul>
+          <li>Supabase (base de données, realtime, edge functions).</li>
+          <li>OpenRouter (génération de résumés IA).</li>
+          <li>Google AdMob (publicités pour le plan Free).</li>
+          <li>RevenueCat (gestion abonnements/entitlements).</li>
+          <li>Datadog (monitoring et erreurs, si activé).</li>
+        </ul>
+
+        <h3>6. Conservation</h3>
+        <ul>
+          <li>Free : jusqu’à 7 jours par défaut.</li>
+          <li>Premium : jusqu’à 30 jours par défaut.</li>
+          <li>Les hôtes Premium peuvent prolonger de +30 jours selon les limites de l’app.</li>
+          <li>Les données expirées sont supprimées automatiquement côté backend.</li>
+        </ul>
+
+        <h3>7. Vos droits</h3>
+        <p>
+          Selon votre juridiction, vous pouvez demander l’accès, la rectification, la suppression ou la limitation.
+          Contact : <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+        </p>
+
+        <h3>8. Sécurité</h3>
+        <p>
+          Nous utilisons HTTPS/TLS, des contrôles d’accès backend et des mécanismes anti-abus. Aucun service en ligne ne peut
+          garantir une sécurité absolue.
+        </p>
+
+        <h3>9. Enfants</h3>
+        <p>
+          VibeCheck n’est pas destiné aux enfants en dessous de l’âge autorisé localement sans supervision. Nous ne traitons pas
+          sciemment les données personnelles d’enfants.
+        </p>
+
+        <h3>10. Modifications</h3>
+        <p>
+          Cette politique peut être mise à jour. La version la plus récente et sa date d’effet sont publiées sur cette page.
+        </p>
+      </section>
+
+      <section id="policy-it" class="policy hidden" data-lang-panel="it">
+        <h2>Informativa sulla Privacy VibeCheck (Italiano)</h2>
+
+        <h3>1. Ambito</h3>
+        <p>
+          VibeCheck consente votazioni anonime in tempo reale, commenti facoltativi, riepiloghi IA dopo la chiusura della
+          sessione e condivisione dei risultati.
+        </p>
+
+        <h3>2. Dati trattati</h3>
+        <ul>
+          <li>ID dispositivo anonimo (UUID generato localmente).</li>
+          <li>Metadati room (nome, codice, tipo, timestamp).</li>
+          <li>Voti (valore 1-5, timestamp, riferimento room).</li>
+          <li>Commenti facoltativi dei partecipanti.</li>
+          <li>Stato abbonamento/entitlement Premium.</li>
+          <li>Telemetria tecnica e errori (se abilitata).</li>
+        </ul>
+
+        <h3>3. Dati non raccolti</h3>
+        <ul>
+          <li>Nessuna registrazione account obbligatoria.</li>
+          <li>Nessun nome/cognome o numero di telefono richiesto.</li>
+          <li>Nessuna raccolta contatti o GPS.</li>
+          <li>Nessun file o foto personali richiesti di default.</li>
+        </ul>
+
+        <h3>4. Finalità</h3>
+        <ul>
+          <li>Fornire le funzioni core (room, voto, sync, riepilogo IA).</li>
+          <li>Prevenire abusi (es. voto duplicato dallo stesso dispositivo).</li>
+          <li>Applicare regole Free/Premium, quote IA e retention.</li>
+          <li>Garantire sicurezza, stabilità e diagnostica.</li>
+        </ul>
+
+        <h3>5. Responsabili e terze parti</h3>
+        <ul>
+          <li>Supabase (database, realtime, edge functions).</li>
+          <li>OpenRouter (generazione riepiloghi IA).</li>
+          <li>Google AdMob (pubblicità per piano Free).</li>
+          <li>RevenueCat (gestione abbonamenti/entitlement).</li>
+          <li>Datadog (monitoraggio/errori, se attivo).</li>
+        </ul>
+
+        <h3>6. Conservazione dati</h3>
+        <ul>
+          <li>Free: fino a 7 giorni per impostazione predefinita.</li>
+          <li>Premium: fino a 30 giorni per impostazione predefinita.</li>
+          <li>Gli host Premium possono estendere di +30 giorni secondo i limiti in-app.</li>
+          <li>I dati scaduti vengono rimossi automaticamente da job backend.</li>
+        </ul>
+
+        <h3>7. Diritti dell’utente</h3>
+        <p>
+          In base alla normativa applicabile, puoi richiedere accesso, rettifica, cancellazione o limitazione.
+          Contatto: <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+        </p>
+
+        <h3>8. Sicurezza</h3>
+        <p>
+          Usiamo HTTPS/TLS, controlli di accesso backend e meccanismi anti-abuso. Nessun servizio online può garantire sicurezza
+          assoluta.
+        </p>
+
+        <h3>9. Minori</h3>
+        <p>
+          VibeCheck non è destinata a minori sotto l’età consentita localmente senza supervisione di un tutore. Non trattiamo
+          consapevolmente dati personali di minori.
+        </p>
+
+        <h3>10. Modifiche</h3>
+        <p>
+          Questa informativa può essere aggiornata periodicamente. L’ultima versione e data di efficacia sono pubblicate su
+          questa pagina.
+        </p>
+      </section>
+
+      <p class="footer">
+        © 2026 Mcat.one / Mateusz Kania. All rights reserved.
+      </p>
     </main>
+
+    <script>
+      (function () {
+        const buttons = Array.from(document.querySelectorAll('.lang-btn'));
+        const panels = Array.from(document.querySelectorAll('[data-lang-panel]'));
+
+        const setLang = (lang) => {
+          buttons.forEach((btn) => {
+            const active = btn.dataset.lang === lang;
+            btn.classList.toggle('active', active);
+            btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+
+          panels.forEach((panel) => {
+            panel.classList.toggle('hidden', panel.getAttribute('data-lang-panel') !== lang);
+          });
+        };
+
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', () => setLang(btn.dataset.lang));
+        });
+
+        const preferred = (navigator.language || 'en').slice(0, 2).toLowerCase();
+        if (['pl', 'en', 'de', 'fr', 'it'].includes(preferred)) {
+          setLang(preferred);
+        }
+      })();
+    </script>
   </body>
 </html>
