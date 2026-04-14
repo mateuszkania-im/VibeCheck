@@ -2,7 +2,7 @@
 
 Effective date: **April 8, 2026**  
 Controller: **Mcat.one / Mateusz Kania**  
-Contact: **mateusz@mcat.one**
+Contact: **support@mcat.one**
 
 ---
 
@@ -45,7 +45,7 @@ VibeCheck provides anonymous realtime voting rooms, optional participant reflect
 - Expired data is automatically removed by backend cleanup jobs
 
 ### 7. User Rights
-Depending on your jurisdiction, you may request access, rectification, deletion, or restriction of processed data. Contact: **mateusz@mcat.one**
+Depending on your jurisdiction, you may request access, rectification, deletion, or restriction of processed data. Contact: **support@mcat.one**
 
 ### 8. Security
 We use HTTPS/TLS, backend access controls, and anti-abuse controls. No online system can guarantee absolute security.
@@ -97,7 +97,7 @@ VibeCheck umożliwia anonimowe głosowanie realtime, opcjonalne przemyślenia uc
 - Dane po wygaśnięciu retencji są automatycznie usuwane przez cleanup joby backendowe
 
 ### 7. Prawa użytkownika
-W zależności od jurysdykcji masz prawo do dostępu, sprostowania, usunięcia lub ograniczenia przetwarzania danych. Kontakt: **mateusz@mcat.one**
+W zależności od jurysdykcji masz prawo do dostępu, sprostowania, usunięcia lub ograniczenia przetwarzania danych. Kontakt: **support@mcat.one**
 
 ### 8. Bezpieczeństwo
 Stosujemy HTTPS/TLS, kontrolę dostępu po stronie backendu i mechanizmy antynadużyciowe. Żadna usługa internetowa nie gwarantuje pełnego bezpieczeństwa.
@@ -149,7 +149,7 @@ VibeCheck bietet anonyme Echtzeit-Abstimmungen, optionale Teilnehmer-Notizen, KI
 - Abgelaufene Daten werden automatisch durch Backend-Cleanup-Jobs entfernt
 
 ### 7. Nutzerrechte
-Je nach Rechtsraum haben Sie Rechte auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung. Kontakt: **mateusz@mcat.one**
+Je nach Rechtsraum haben Sie Rechte auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung. Kontakt: **support@mcat.one**
 
 ### 8. Sicherheit
 Wir nutzen HTTPS/TLS, Backend-Zugriffskontrollen und Anti-Missbrauchsmechanismen. Absolute Sicherheit kann kein Onlinedienst garantieren.
@@ -201,7 +201,7 @@ VibeCheck propose des votes anonymes en temps réel, des commentaires optionnels
 - Les données expirées sont supprimées automatiquement par des jobs backend
 
 ### 7. Vos droits
-Selon votre juridiction, vous pouvez demander l’accès, la rectification, la suppression ou la limitation. Contact : **mateusz@mcat.one**
+Selon votre juridiction, vous pouvez demander l’accès, la rectification, la suppression ou la limitation. Contact : **support@mcat.one**
 
 ### 8. Sécurité
 Nous utilisons HTTPS/TLS, des contrôles d’accès backend et des mécanismes anti-abus. Aucun service en ligne ne peut garantir une sécurité absolue.
@@ -253,7 +253,7 @@ VibeCheck offre votazioni anonime in tempo reale, riflessioni facoltative, riepi
 - I dati scaduti vengono rimossi automaticamente da job backend
 
 ### 7. Diritti utente
-In base alla normativa applicabile, puoi richiedere accesso, rettifica, cancellazione o limitazione del trattamento. Contatto: **mateusz@mcat.one**
+In base alla normativa applicabile, puoi richiedere accesso, rettifica, cancellazione o limitazione del trattamento. Contatto: **support@mcat.one**
 
 ### 8. Sicurezza
 Usiamo HTTPS/TLS, controlli di accesso backend e meccanismi anti-abuso. Nessun servizio online può garantire sicurezza assoluta.
