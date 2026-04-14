@@ -3,184 +3,531 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VibeCheck</title>
+    <title>VibeCheck | Real-Time Pulse for Teams</title>
     <meta
       name="description"
-      content="VibeCheck is a real-time anonymous pulse tool for teams and classrooms. Create a room, share code or QR, collect votes and reflections, and close with AI summary."
+      content="VibeCheck helps teams and classrooms run fast anonymous pulse checks with live results, reflections, and AI summaries."
     />
     <style>
       :root {
-        --bg: #020617;
-        --surface: #0b1220;
-        --surface2: #111827;
-        --text: #e2e8f0;
-        --muted: #94a3b8;
-        --border: #1e293b;
-        --brandA: #22f5a5;
-        --brandB: #3bd1ff;
+        --bg-main: #020617;
+        --bg-surface: rgba(11, 18, 32, 0.82);
+        --bg-elevated: rgba(17, 24, 39, 0.9);
+        --text-primary: #e2e8f0;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --border: rgba(148, 163, 184, 0.22);
+        --primary: #22f5a5;
+        --secondary: #3bd1ff;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html,
       body {
         margin: 0;
-        min-height: 100vh;
-        color: var(--text);
-        background:
-          radial-gradient(circle at 10% 10%, rgba(34, 245, 165, 0.15), transparent 38%),
-          radial-gradient(circle at 90% 20%, rgba(59, 209, 255, 0.15), transparent 36%),
-          var(--bg);
+        min-height: 100%;
+      }
+
+      body {
+        color: var(--text-primary);
         font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-          "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+          Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background:
+          radial-gradient(1200px 700px at 12% 8%, rgba(34, 245, 165, 0.2), transparent 52%),
+          radial-gradient(1200px 700px at 85% 0%, rgba(59, 209, 255, 0.2), transparent 50%),
+          radial-gradient(600px 400px at 50% 120%, rgba(59, 209, 255, 0.14), transparent 60%),
+          var(--bg-main);
       }
 
-      .wrap {
-        max-width: 980px;
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.15;
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.06) 0.5px, transparent 0.5px);
+        background-size: 3px 3px;
+      }
+
+      .container {
+        max-width: 1120px;
         margin: 0 auto;
-        padding: 24px 16px 56px;
+        padding: 24px 18px 60px;
       }
 
-      .hero,
-      .card {
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        position: sticky;
+        top: 14px;
+        z-index: 20;
+        padding: 12px 14px;
         border: 1px solid var(--border);
-        border-radius: 20px;
-        background: var(--surface);
+        border-radius: 16px;
+        backdrop-filter: blur(14px);
+        background: rgba(2, 6, 23, 0.68);
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 8px 10px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        transition: all 180ms ease;
+      }
+
+      .nav a:hover {
+        color: var(--text-primary);
+        border-color: var(--border);
       }
 
       .hero {
-        padding: 22px;
-        background: linear-gradient(135deg, rgba(34, 245, 165, 0.1), rgba(59, 209, 255, 0.08));
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 26px;
+        overflow: hidden;
+        background: linear-gradient(
+          140deg,
+          rgba(34, 245, 165, 0.17),
+          rgba(59, 209, 255, 0.16) 28%,
+          rgba(11, 18, 32, 0.88) 66%
+        );
       }
 
-      .badge {
-        display: inline-block;
+      .hero-inner {
+        padding: 34px 28px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 20px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         border-radius: 999px;
-        padding: 6px 10px;
+        padding: 6px 12px;
         font-size: 12px;
         font-weight: 700;
-        color: #001a11;
-        background: linear-gradient(135deg, var(--brandA), var(--brandB));
+        color: #001a13;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       }
 
-      h1 {
-        margin: 12px 0 8px;
-        font-size: 40px;
+      .hero h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 1.04;
+        letter-spacing: -0.02em;
       }
 
-      p {
+      .hero p {
         margin: 0;
-        color: var(--muted);
-        line-height: 1.55;
+        color: var(--text-secondary);
+        max-width: 660px;
+        line-height: 1.6;
+        font-size: clamp(16px, 2vw, 18px);
       }
 
-      .cta {
-        margin-top: 16px;
+      .hero-ctas {
+        margin-top: 22px;
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
+        flex-wrap: wrap;
       }
 
       .btn {
-        border-radius: 12px;
-        padding: 11px 14px;
-        font-size: 15px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         text-decoration: none;
+        border-radius: 12px;
+        padding: 12px 16px;
+        font-weight: 700;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
       }
 
       .btn-primary {
-        color: #001a11;
-        background: linear-gradient(135deg, var(--brandA), var(--brandB));
-        font-weight: 700;
+        color: #001a13;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        box-shadow: 0 10px 32px rgba(34, 245, 165, 0.24);
       }
 
-      .btn-ghost {
+      .btn-secondary {
+        color: var(--text-primary);
         border: 1px solid var(--border);
-        color: var(--text);
-        background: var(--surface2);
+        background: rgba(15, 23, 42, 0.75);
       }
 
-      .grid {
-        margin-top: 14px;
+      .stats {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 14px;
+        background: rgba(2, 6, 23, 0.64);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+
+      .stat span {
+        color: var(--text-secondary);
+        font-size: 13px;
+      }
+
+      .section {
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 22px;
+        background: var(--bg-surface);
+        backdrop-filter: blur(10px);
+      }
+
+      .section h2 {
+        margin: 0 0 8px;
+        font-size: clamp(24px, 4vw, 36px);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--text-secondary);
+        max-width: 620px;
+      }
+
+      .feature-grid {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
       }
 
-      .card {
+      .feature {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 14px;
+        background: var(--bg-elevated);
+      }
+
+      .feature h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--text-secondary);
+        line-height: 1.55;
+      }
+
+      .flow {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .step {
+        border: 1px dashed rgba(59, 209, 255, 0.4);
+        border-radius: 16px;
+        padding: 14px;
+        background: rgba(2, 6, 23, 0.6);
+      }
+
+      .step .n {
+        display: inline-flex;
+        width: 28px;
+        height: 28px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-bottom: 8px;
+        color: #001a13;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      }
+
+      .plans {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .plan {
+        border: 1px solid var(--border);
+        border-radius: 16px;
         padding: 16px;
+        background: var(--bg-elevated);
       }
 
-      h2 {
-        margin: 0 0 6px;
-        font-size: 20px;
+      .plan h3 {
+        margin: 0 0 4px;
+        font-size: 22px;
       }
 
-      ul {
-        margin: 10px 0 0 18px;
-        padding: 0;
+      .price {
+        font-size: 30px;
+        font-weight: 800;
+        margin: 8px 0 10px;
       }
 
-      li {
-        margin-bottom: 6px;
-        color: var(--muted);
+      .plan ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--text-secondary);
+      }
+
+      .plan li {
+        margin-bottom: 8px;
+      }
+
+      .plan-premium {
+        border-color: rgba(34, 245, 165, 0.55);
+        box-shadow: inset 0 0 0 1px rgba(34, 245, 165, 0.15);
+      }
+
+      .final {
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
+        background:
+          radial-gradient(circle at right bottom, rgba(34, 245, 165, 0.18), transparent 40%),
+          rgba(11, 18, 32, 0.88);
+      }
+
+      .final h2 {
+        margin: 0 0 8px;
+      }
+
+      .final p {
+        margin: 0;
+        color: var(--text-secondary);
+      }
+
+      .final .hero-ctas {
+        margin-top: 16px;
       }
 
       .footer {
         margin-top: 14px;
-        color: var(--muted);
+        color: var(--text-muted);
         font-size: 13px;
+        text-align: center;
       }
 
-      @media (max-width: 760px) {
-        .grid {
+      @media (max-width: 920px) {
+        .hero-inner {
           grid-template-columns: 1fr;
         }
 
-        h1 {
-          font-size: 34px;
+        .stats {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .feature-grid,
+        .flow {
+          grid-template-columns: 1fr;
+        }
+
+        .plans {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .container {
+          padding: 18px 14px 44px;
+        }
+
+        .hero-inner,
+        .section,
+        .final {
+          padding: 18px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          top: 8px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="wrap">
+    <div class="noise" aria-hidden="true"></div>
+    <main class="container">
+      <header class="topbar">
+        <strong class="brand">VibeCheck</strong>
+        <nav class="nav" aria-label="Secondary">
+          <a href="./support.html">Support</a>
+          <a href="./index.html">Privacy</a>
+        </nav>
+      </header>
+
       <section class="hero">
-        <div class="badge">VibeCheck</div>
-        <h1>Real-time anonymous pulse checks</h1>
-        <p>
-          Create a room, share a 6-character code or QR, collect votes and reflections,
-          then close with a clear summary for your team or class.
-        </p>
-        <div class="cta">
-          <a class="btn btn-primary" href="./support.html">Support</a>
-          <a class="btn btn-ghost" href="./index.html">Privacy Policy</a>
+        <div class="hero-inner">
+          <div>
+            <span class="pill">Real-time • Anonymous • Actionable</span>
+            <h1>Make the room honest in 30 seconds</h1>
+            <p>
+              VibeCheck gives teams and classrooms a no-friction way to pulse the
+              atmosphere, collect short reflections, and close each session with a
+              clear next step.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="./support.html">Get in touch</a>
+              <a class="btn btn-secondary" href="./index.html">Read privacy</a>
+            </div>
+          </div>
+
+          <div class="stats" aria-label="Product highlights">
+            <article class="stat">
+              <strong>Live voting</strong>
+              <span>instant updates for everyone in the room</span>
+            </article>
+            <article class="stat">
+              <strong>QR + code join</strong>
+              <span>fast onboarding without accounts</span>
+            </article>
+            <article class="stat">
+              <strong>AI summary</strong>
+              <span>host closes session and shares result</span>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="grid">
-        <article class="card">
-          <h2>What you can do</h2>
-          <ul>
-            <li>Anonymous voting in real time (1–5 scale)</li>
-            <li>Join by room code or QR scan</li>
-            <li>Optional participant reflections</li>
-            <li>Host controls and close-voting flow</li>
-            <li>AI summary after session close</li>
-          </ul>
-        </article>
+      <section class="section">
+        <div class="section-head">
+          <h2>Built for high-signal conversations</h2>
+          <p>
+            From daily standups to classroom retrospectives, VibeCheck compresses
+            feedback loops and keeps everyone aligned without heavy process.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Realtime by default</h3>
+            <p>Votes sync live across devices so the room sees one shared truth.</p>
+          </article>
+          <article class="feature">
+            <h3>Host-only controls</h3>
+            <p>Only the host can close voting and publish final summary.</p>
+          </article>
+          <article class="feature">
+            <h3>Share-ready outcomes</h3>
+            <p>Exportable final result with vibe score and summary after close.</p>
+          </article>
+        </div>
+      </section>
 
-        <article class="card">
-          <h2>Made for</h2>
-          <ul>
-            <li>Team standups and retrospectives</li>
-            <li>Classrooms and workshops</li>
-            <li>Project reviews and check-ins</li>
-            <li>Fast pulse checks without account setup</li>
-          </ul>
-        </article>
+      <section class="section">
+        <div class="section-head">
+          <h2>Simple flow, zero training</h2>
+          <p>Open app, start room, collect signal, close with a clear conclusion.</p>
+        </div>
+        <div class="flow">
+          <article class="step">
+            <span class="n">1</span>
+            <h3>Create room</h3>
+            <p>Pick session type and start in a few taps.</p>
+          </article>
+          <article class="step">
+            <span class="n">2</span>
+            <h3>Invite instantly</h3>
+            <p>Participants join via 6-character code or QR scan.</p>
+          </article>
+          <article class="step">
+            <span class="n">3</span>
+            <h3>Close and decide</h3>
+            <p>Host closes voting, reviews summary, and shares final report.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Pricing designed for adoption</h2>
+          <p>
+            Start free, move to Premium only when you need longer retention and
+            unlimited summaries.
+          </p>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <h3>Free</h3>
+            <div class="price">$0</div>
+            <ul>
+              <li>Core live voting flow</li>
+              <li>Ads enabled</li>
+              <li>AI summary limit 5 / 7 days</li>
+              <li>History retention 7 days</li>
+            </ul>
+          </article>
+          <article class="plan plan-premium">
+            <h3>Premium</h3>
+            <div class="price">$2.99 lifetime</div>
+            <ul>
+              <li>No ads</li>
+              <li>Unlimited AI summaries (fair use)</li>
+              <li>History retention 30 days</li>
+              <li>+30 days extension options for hosts</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="final">
+        <h2>Ready to launch VibeCheck in your team?</h2>
+        <p>
+          If you need enterprise setup, custom rollout, or product questions, we
+          can help you get production-ready quickly.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="./support.html">Contact support</a>
+          <a class="btn btn-secondary" href="./index.html">Privacy policy</a>
+        </div>
       </section>
 
       <p class="footer">© 2026 Mcat.one / Mateusz Kania. All rights reserved.</p>
