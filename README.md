@@ -1,15 +1,18 @@
-# VibeCheck Privacy Policy
+# VibeCheck Public Pages
 
-This repository hosts the public VibeCheck privacy policy page for app store links.
+This repository hosts public VibeCheck pages for App Store metadata links.
 
 ## Files
 
-- `index.html` - hosted privacy policy page
+- `index.html` - privacy policy page
+- `support.html` - support page with contact form
+- `marketing.html` - marketing / landing page
 - `PRIVACY-POLICY.md` - markdown backup/reference
 
 ## GitHub Pages URL
 
-After enabling Pages (`Settings -> Pages -> Deploy from branch -> main / root`), the policy will be available at:
+After enabling Pages (`Settings -> Pages -> Deploy from branch -> main / root`), pages will be available at:
 
-- `https://mateuszkania-im.github.io/VibeCheck/`
-
+- Privacy Policy URL: `https://mateuszkania-im.github.io/VibeCheck/`
+- Support URL: `https://mateuszkania-im.github.io/VibeCheck/support.html`
+- Marketing URL: `https://mateuszkania-im.github.io/VibeCheck/marketing.html`

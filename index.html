@@ -74,6 +74,28 @@
         gap: 8px;
       }
 
+      .top-links {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .top-link {
+        border: 1px solid var(--border);
+        background: var(--surface2);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 13px;
+        text-decoration: none;
+      }
+
+      .top-link:hover {
+        border-color: var(--brandB);
+        text-decoration: none;
+      }
+
       .lang-btn {
         border: 1px solid var(--border);
         background: var(--surface2);
@@ -147,8 +169,13 @@
         <p class="meta">
           Effective date: <strong>April 8, 2026</strong><br />
           Controller: <strong>Mcat.one / Mateusz Kania</strong><br />
-          Contact: <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>
+          Contact: <a class="obf-email" href="#" data-user="mateusz" data-domain="mcat.one">contact</a>
         </p>
+        <div class="top-links">
+          <a class="top-link" href="./marketing.html">Marketing</a>
+          <a class="top-link" href="./support.html">Support</a>
+          <a class="top-link" href="./index.html">Privacy</a>
+        </div>
         <div class="lang-bar" role="tablist" aria-label="Language switcher">
           <button class="lang-btn active" data-lang="en" role="tab" aria-selected="true">English</button>
           <button class="lang-btn" data-lang="pl" role="tab" aria-selected="false">Polski</button>
@@ -213,7 +240,7 @@
         <h3>7. User rights</h3>
         <p>
           Depending on your jurisdiction, you may request access, rectification, deletion, or restriction. Contact us at
-          <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+          <a class="obf-email" href="#" data-user="mateusz" data-domain="mcat.one">contact</a>.
         </p>
 
         <h3>8. Security</h3>
@@ -289,7 +316,7 @@
         <h3>7. Prawa użytkownika</h3>
         <p>
           W zależności od kraju masz prawo do dostępu, sprostowania, usunięcia lub ograniczenia przetwarzania danych.
-          Kontakt: <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+          Kontakt: <a class="obf-email" href="#" data-user="mateusz" data-domain="mcat.one">kontakt</a>.
         </p>
 
         <h3>8. Bezpieczeństwo</h3>
@@ -365,7 +392,7 @@
         <h3>7. Nutzerrechte</h3>
         <p>
           Je nach Rechtsraum haben Sie Rechte auf Auskunft, Berichtigung, Löschung oder Einschränkung. Kontakt:
-          <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+          <a class="obf-email" href="#" data-user="mateusz" data-domain="mcat.one">kontakt</a>.
         </p>
 
         <h3>8. Sicherheit</h3>
@@ -442,7 +469,7 @@
         <h3>7. Vos droits</h3>
         <p>
           Selon votre juridiction, vous pouvez demander l’accès, la rectification, la suppression ou la limitation.
-          Contact : <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+          Contact : <a class="obf-email" href="#" data-user="mateusz" data-domain="mcat.one">contact</a>.
         </p>
 
         <h3>8. Sécurité</h3>
@@ -518,7 +545,7 @@
         <h3>7. Diritti dell’utente</h3>
         <p>
           In base alla normativa applicabile, puoi richiedere accesso, rettifica, cancellazione o limitazione.
-          Contatto: <a href="mailto:mateusz@mcat.one">mateusz@mcat.one</a>.
+          Contatto: <a class="obf-email" href="#" data-user="mateusz" data-domain="mcat.one">contatto</a>.
         </p>
 
         <h3>8. Sicurezza</h3>
@@ -570,6 +597,17 @@
         if (['pl', 'en', 'de', 'fr', 'it'].includes(preferred)) {
           setLang(preferred);
         }
+
+        document.querySelectorAll('.obf-email').forEach((el) => {
+          const user = el.getAttribute('data-user');
+          const domain = el.getAttribute('data-domain');
+          if (!user || !domain) return;
+          const email = `${user}@${domain}`;
+          el.setAttribute('href', `mailto:${email}`);
+          if (!el.textContent || ['contact', 'kontakt', 'contatto'].includes(el.textContent.trim().toLowerCase())) {
+            el.textContent = email;
+          }
+        });
       })();
     </script>
   </body>
