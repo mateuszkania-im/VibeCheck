@@ -2,23 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VibeCheck | Real-Time Pulse for Teams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PromiseKeeper | Keep Small Promises, Build Big Trust</title>
     <meta
       name="description"
-      content="VibeCheck helps teams and classrooms run fast anonymous pulse checks with live results, reflections, and AI summaries."
+      content="PromiseKeeper helps parents keep daily promises with warm reminders, child timelines, and a calm weekly recap."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@500;700&display=swap"
+      rel="stylesheet"
     />
     <style>
       :root {
-        --bg-main: #020617;
-        --bg-surface: rgba(11, 18, 32, 0.82);
-        --bg-elevated: rgba(17, 24, 39, 0.9);
-        --text-primary: #e2e8f0;
-        --text-secondary: #94a3b8;
-        --text-muted: #64748b;
-        --border: rgba(148, 163, 184, 0.22);
-        --primary: #22f5a5;
-        --secondary: #3bd1ff;
+        --ink: #1e1a17;
+        --muted: #6e6259;
+        --paper: #fff6ee;
+        --paper-2: #f6ecdf;
+        --card: rgba(255, 250, 244, 0.86);
+        --line: rgba(126, 101, 82, 0.2);
+        --peach: #f2b9a8;
+        --rose: #e89288;
+        --sage: #93ab85;
+        --sand: #efe2d3;
+        --shadow: 0 22px 44px rgba(71, 44, 25, 0.12);
       }
 
       * {
@@ -32,50 +40,46 @@
       }
 
       body {
-        color: var(--text-primary);
-        font-family:
-          Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-          Arial, sans-serif;
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+        color: var(--ink);
         background:
-          radial-gradient(1200px 700px at 12% 8%, rgba(34, 245, 165, 0.2), transparent 52%),
-          radial-gradient(1200px 700px at 85% 0%, rgba(59, 209, 255, 0.2), transparent 50%),
-          radial-gradient(600px 400px at 50% 120%, rgba(59, 209, 255, 0.14), transparent 60%),
-          var(--bg-main);
+          radial-gradient(1000px 500px at 90% -10%, rgba(232, 146, 136, 0.2), transparent 60%),
+          radial-gradient(900px 500px at -10% 10%, rgba(147, 171, 133, 0.24), transparent 55%),
+          linear-gradient(180deg, var(--paper) 0%, #f8f0e8 100%);
       }
 
-      .noise {
+      .bg-noise {
         position: fixed;
         inset: 0;
         pointer-events: none;
-        opacity: 0.15;
-        background-image:
-          radial-gradient(rgba(255, 255, 255, 0.06) 0.5px, transparent 0.5px);
+        opacity: 0.08;
+        background-image: radial-gradient(#000 0.6px, transparent 0.6px);
         background-size: 3px 3px;
       }
 
       .container {
         max-width: 1120px;
         margin: 0 auto;
-        padding: 24px 18px 60px;
+        padding: 20px 16px 52px;
       }
 
       .topbar {
+        position: sticky;
+        top: 14px;
+        z-index: 20;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        position: sticky;
-        top: 14px;
-        z-index: 20;
-        padding: 12px 14px;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        backdrop-filter: blur(14px);
-        background: rgba(2, 6, 23, 0.68);
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 247, 238, 0.84);
       }
 
       .brand {
-        font-weight: 800;
+        font-weight: 700;
         letter-spacing: 0.2px;
       }
 
@@ -86,68 +90,82 @@
       }
 
       .nav a {
-        color: var(--text-secondary);
         text-decoration: none;
-        padding: 8px 10px;
-        font-size: 14px;
-        border-radius: 10px;
+        color: var(--muted);
+        font-size: 13px;
         border: 1px solid transparent;
-        transition: all 180ms ease;
+        border-radius: 999px;
+        padding: 8px 12px;
       }
 
       .nav a:hover {
-        color: var(--text-primary);
-        border-color: var(--border);
+        color: var(--ink);
+        border-color: var(--line);
       }
 
       .hero {
-        margin-top: 16px;
-        border: 1px solid var(--border);
-        border-radius: 26px;
+        margin-top: 14px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: linear-gradient(140deg, rgba(242, 185, 168, 0.36), rgba(147, 171, 133, 0.26));
+        box-shadow: var(--shadow);
         overflow: hidden;
-        background: linear-gradient(
-          140deg,
-          rgba(34, 245, 165, 0.17),
-          rgba(59, 209, 255, 0.16) 28%,
-          rgba(11, 18, 32, 0.88) 66%
-        );
+        position: relative;
       }
 
-      .hero-inner {
-        padding: 34px 28px;
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        right: -120px;
+        top: -100px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.46) 0%, transparent 65%);
+        pointer-events: none;
+      }
+
+      .hero-grid {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 20px;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        position: relative;
+        z-index: 1;
       }
 
-      .pill {
+      .chip {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
         border-radius: 999px;
-        padding: 6px 12px;
+        padding: 7px 12px;
         font-size: 12px;
         font-weight: 700;
-        color: #001a13;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid rgba(126, 101, 82, 0.24);
       }
 
-      .hero h1 {
-        margin: 14px 0 10px;
-        font-size: clamp(34px, 6vw, 64px);
-        line-height: 1.04;
+      h1,
+      h2 {
+        font-family: "Fraunces", Georgia, serif;
         letter-spacing: -0.02em;
       }
 
-      .hero p {
-        margin: 0;
-        color: var(--text-secondary);
-        max-width: 660px;
-        line-height: 1.6;
-        font-size: clamp(16px, 2vw, 18px);
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(36px, 8vw, 66px);
+        line-height: 0.98;
       }
 
-      .hero-ctas {
+      .hero-copy {
+        margin: 0;
+        max-width: 620px;
+        color: #5f534b;
+        line-height: 1.58;
+        font-size: 17px;
+      }
+
+      .hero-cta {
         margin-top: 22px;
         display: flex;
         gap: 10px;
@@ -155,14 +173,11 @@
       }
 
       .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        border-radius: 12px;
-        padding: 12px 16px;
+        border-radius: 14px;
         font-weight: 700;
-        transition: transform 180ms ease, box-shadow 180ms ease;
+        text-decoration: none;
+        padding: 12px 16px;
+        transition: transform 200ms ease;
       }
 
       .btn:hover {
@@ -170,368 +185,275 @@
       }
 
       .btn-primary {
-        color: #001a13;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        box-shadow: 0 10px 32px rgba(34, 245, 165, 0.24);
+        color: #fff;
+        border: 1px solid transparent;
+        background: linear-gradient(125deg, #2e241d, #503a2c);
       }
 
       .btn-secondary {
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-        background: rgba(15, 23, 42, 0.75);
+        color: var(--ink);
+        border: 1px solid rgba(126, 101, 82, 0.32);
+        background: rgba(255, 255, 255, 0.7);
       }
 
-      .stats {
+      .hero-card-col {
         display: grid;
         gap: 10px;
       }
 
-      .stat {
-        border: 1px solid var(--border);
-        border-radius: 16px;
+      .mini-card {
+        border: 1px solid rgba(126, 101, 82, 0.24);
+        border-radius: 18px;
         padding: 14px;
-        background: rgba(2, 6, 23, 0.64);
+        background: rgba(255, 255, 255, 0.74);
       }
 
-      .stat strong {
+      .mini-card strong {
         display: block;
-        font-size: 22px;
-        margin-bottom: 4px;
+        font-size: 20px;
+        margin-bottom: 2px;
       }
 
-      .stat span {
-        color: var(--text-secondary);
+      .mini-card span {
+        color: var(--muted);
         font-size: 13px;
       }
 
       .section {
-        margin-top: 16px;
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 22px;
-        background: var(--bg-surface);
-        backdrop-filter: blur(10px);
+        margin-top: 14px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--card);
+        padding: 20px;
       }
 
       .section h2 {
-        margin: 0 0 8px;
-        font-size: clamp(24px, 4vw, 36px);
-      }
-
-      .section-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-        align-items: flex-end;
-      }
-
-      .section-head p {
         margin: 0;
-        color: var(--text-secondary);
-        max-width: 620px;
+        font-size: clamp(26px, 5vw, 42px);
+      }
+
+      .section-sub {
+        margin: 8px 0 0;
+        color: var(--muted);
       }
 
       .feature-grid {
-        margin-top: 16px;
+        margin-top: 14px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
+        gap: 10px;
       }
 
       .feature {
-        border: 1px solid var(--border);
         border-radius: 16px;
         padding: 14px;
-        background: var(--bg-elevated);
+        border: 1px solid rgba(126, 101, 82, 0.2);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 236, 223, 0.76));
       }
 
       .feature h3 {
-        margin: 0 0 8px;
-        font-size: 18px;
+        margin: 0 0 6px;
+        font-size: 17px;
       }
 
       .feature p {
         margin: 0;
-        color: var(--text-secondary);
-        line-height: 1.55;
+        color: var(--muted);
+        line-height: 1.52;
+        font-size: 14px;
       }
 
-      .flow {
-        margin-top: 14px;
+      .trust {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: 0.9fr 1.1fr;
         gap: 12px;
-      }
-
-      .step {
-        border: 1px dashed rgba(59, 209, 255, 0.4);
-        border-radius: 16px;
-        padding: 14px;
-        background: rgba(2, 6, 23, 0.6);
-      }
-
-      .step .n {
-        display: inline-flex;
-        width: 28px;
-        height: 28px;
         align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin-bottom: 8px;
-        color: #001a13;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       }
 
-      .plans {
-        margin-top: 16px;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .plan {
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 16px;
-        background: var(--bg-elevated);
-      }
-
-      .plan h3 {
-        margin: 0 0 4px;
-        font-size: 22px;
-      }
-
-      .price {
-        font-size: 30px;
-        font-weight: 800;
-        margin: 8px 0 10px;
-      }
-
-      .plan ul {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--text-secondary);
-      }
-
-      .plan li {
-        margin-bottom: 8px;
-      }
-
-      .plan-premium {
-        border-color: rgba(34, 245, 165, 0.55);
-        box-shadow: inset 0 0 0 1px rgba(34, 245, 165, 0.15);
-      }
-
-      .final {
-        margin-top: 16px;
-        border: 1px solid var(--border);
+      .trust-visual {
+        min-height: 230px;
         border-radius: 20px;
-        padding: 24px;
+        border: 1px solid rgba(126, 101, 82, 0.24);
         background:
-          radial-gradient(circle at right bottom, rgba(34, 245, 165, 0.18), transparent 40%),
-          rgba(11, 18, 32, 0.88);
+          linear-gradient(165deg, rgba(242, 185, 168, 0.5), rgba(147, 171, 133, 0.38)),
+          var(--sand);
+        position: relative;
+        overflow: hidden;
       }
 
-      .final h2 {
-        margin: 0 0 8px;
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(2px);
+        animation: float 8s ease-in-out infinite;
       }
 
-      .final p {
-        margin: 0;
-        color: var(--text-secondary);
+      .blob.one {
+        width: 130px;
+        height: 130px;
+        background: rgba(255, 255, 255, 0.56);
+        left: 14px;
+        top: 20px;
       }
 
-      .final .hero-ctas {
-        margin-top: 16px;
+      .blob.two {
+        width: 170px;
+        height: 170px;
+        background: rgba(255, 255, 255, 0.44);
+        right: -20px;
+        bottom: -20px;
+        animation-delay: 1.5s;
+      }
+
+      .blob.three {
+        width: 88px;
+        height: 88px;
+        background: rgba(80, 58, 44, 0.14);
+        left: 44%;
+        bottom: 24%;
+        animation-delay: 2.3s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+
+        50% {
+          transform: translateY(-8px) scale(1.02);
+        }
       }
 
       .footer {
-        margin-top: 14px;
-        color: var(--text-muted);
+        margin-top: 16px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        padding: 16px;
+        background: rgba(255, 250, 244, 0.82);
+      }
+
+      .footer p {
+        margin: 0;
+        color: var(--muted);
         font-size: 13px;
-        text-align: center;
       }
 
-      @media (max-width: 920px) {
-        .hero-inner {
-          grid-template-columns: 1fr;
-        }
-
-        .stats {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
+      @media (max-width: 900px) {
+        .hero-grid,
         .feature-grid,
-        .flow {
+        .trust {
           grid-template-columns: 1fr;
         }
 
-        .plans {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .container {
-          padding: 18px 14px 44px;
-        }
-
-        .hero-inner,
-        .section,
-        .final {
-          padding: 18px;
-        }
-
-        .stats {
-          grid-template-columns: 1fr;
-        }
-
-        .topbar {
-          top: 8px;
+        .hero {
+          padding: 22px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="noise" aria-hidden="true"></div>
+    <div class="bg-noise"></div>
     <main class="container">
       <header class="topbar">
-        <strong class="brand">VibeCheck</strong>
-        <nav class="nav" aria-label="Secondary">
-          <a href="./support.html">Support</a>
+        <div class="brand">PromiseKeeper</div>
+        <nav class="nav" aria-label="Primary">
+          <a href="./marketing.html">Marketing</a>
           <a href="./index.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="./support.html">Support</a>
         </nav>
       </header>
 
       <section class="hero">
-        <div class="hero-inner">
+        <div class="hero-grid">
           <div>
-            <span class="pill">Real-time • Anonymous • Actionable</span>
-            <h1>Make the room honest in 30 seconds</h1>
-            <p>
-              VibeCheck gives teams and classrooms a no-friction way to pulse the
-              atmosphere, collect short reflections, and close each session with a
-              clear next step.
+            <span class="chip">Family routine app for iPhone</span>
+            <h1>Keep small promises, build big trust.</h1>
+            <p class="hero-copy">
+              PromiseKeeper helps parents track daily commitments, stay consistent with reminders,
+              and build confidence with children through visible follow-through.
             </p>
-            <div class="hero-ctas">
-              <a class="btn btn-primary" href="./support.html">Get in touch</a>
-              <a class="btn btn-secondary" href="./index.html">Read privacy</a>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="mailto:support@mcat.one?subject=PromiseKeeper%20TestFlight%20Access">Request TestFlight access</a>
+              <a class="btn btn-secondary" href="./index.html">Read Privacy Policy</a>
             </div>
           </div>
-
-          <div class="stats" aria-label="Product highlights">
-            <article class="stat">
-              <strong>Live voting</strong>
-              <span>instant updates for everyone in the room</span>
+          <div class="hero-card-col">
+            <article class="mini-card">
+              <strong>10 sec</strong>
+              <span>Add one promise in under ten seconds</span>
             </article>
-            <article class="stat">
-              <strong>QR + code join</strong>
-              <span>fast onboarding without accounts</span>
+            <article class="mini-card">
+              <strong>2 taps</strong>
+              <span>Mark as kept or move to tomorrow</span>
             </article>
-            <article class="stat">
-              <strong>AI summary</strong>
-              <span>host closes session and shares result</span>
+            <article class="mini-card">
+              <strong>Weekly recap</strong>
+              <span>Calm stats without a heavy dashboard</span>
             </article>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-head">
-          <h2>Built for high-signal conversations</h2>
-          <p>
-            From daily standups to classroom retrospectives, VibeCheck compresses
-            feedback loops and keeps everyone aligned without heavy process.
-          </p>
-        </div>
+        <h2>Designed for consistency, not pressure</h2>
+        <p class="section-sub">
+          PromiseKeeper is built around a supportive loop: one promise, one action, one moment of trust.
+        </p>
         <div class="feature-grid">
           <article class="feature">
-            <h3>Realtime by default</h3>
-            <p>Votes sync live across devices so the room sees one shared truth.</p>
+            <h3>Today focus</h3>
+            <p>One clear list of promises due today with fast keep/move actions.</p>
           </article>
           <article class="feature">
-            <h3>Host-only controls</h3>
-            <p>Only the host can close voting and publish final summary.</p>
+            <h3>Daily reminder</h3>
+            <p>A gentle notification nudges the parent to stay on track each morning.</p>
           </article>
           <article class="feature">
-            <h3>Share-ready outcomes</h3>
-            <p>Exportable final result with vibe score and summary after close.</p>
+            <h3>Weekly recap</h3>
+            <p>Completion trends and one practical next-step suggestion.</p>
+          </article>
+          <article class="feature">
+            <h3>Child timeline</h3>
+            <p>Promises can be assigned per child to keep family context clear.</p>
+          </article>
+          <article class="feature">
+            <h3>Premium add-ons</h3>
+            <p>Co-parent sync, export options, and deeper household coordination tools.</p>
+          </article>
+          <article class="feature">
+            <h3>Local-first base</h3>
+            <p>Your core promise data stays on-device by default in this release.</p>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-head">
-          <h2>Simple flow, zero training</h2>
-          <p>Open app, start room, collect signal, close with a clear conclusion.</p>
+      <section class="section trust">
+        <div class="trust-visual" aria-hidden="true">
+          <div class="blob one"></div>
+          <div class="blob two"></div>
+          <div class="blob three"></div>
         </div>
-        <div class="flow">
-          <article class="step">
-            <span class="n">1</span>
-            <h3>Create room</h3>
-            <p>Pick session type and start in a few taps.</p>
-          </article>
-          <article class="step">
-            <span class="n">2</span>
-            <h3>Invite instantly</h3>
-            <p>Participants join via 6-character code or QR scan.</p>
-          </article>
-          <article class="step">
-            <span class="n">3</span>
-            <h3>Close and decide</h3>
-            <p>Host closes voting, reviews summary, and shares final report.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Pricing designed for adoption</h2>
-          <p>
-            Start free, move to Premium only when you need longer retention and
-            unlimited summaries.
+        <div>
+          <h2>Privacy-first from day one</h2>
+          <p class="section-sub">
+            PromiseKeeper is designed for low data collection, clear legal pages, and transparent subscription terms.
+            You can review our policy and terms before enabling any premium plan.
           </p>
-        </div>
-        <div class="plans">
-          <article class="plan">
-            <h3>Free</h3>
-            <div class="price">$0</div>
-            <ul>
-              <li>Core live voting flow</li>
-              <li>Ads enabled</li>
-              <li>AI summary limit 5 / 7 days</li>
-              <li>History retention 7 days</li>
-            </ul>
-          </article>
-          <article class="plan plan-premium">
-            <h3>Premium</h3>
-            <div class="price">$2.99 / month</div>
-            <ul>
-              <li>No ads</li>
-              <li>Unlimited AI summaries (fair use)</li>
-              <li>History retention 30 days</li>
-              <li>+30 days extension options for hosts</li>
-              <li>Cancel anytime</li>
-            </ul>
-          </article>
+          <div class="hero-cta" style="margin-top:14px">
+            <a class="btn btn-secondary" href="./terms.html">Terms of Use</a>
+            <a class="btn btn-secondary" href="./support.html">Support</a>
+          </div>
         </div>
       </section>
 
-      <section class="final">
-        <h2>Ready to launch VibeCheck in your team?</h2>
+      <footer class="footer">
         <p>
-          If you need enterprise setup, custom rollout, or product questions, we
-          can help you get production-ready quickly.
+          PromiseKeeper by Mcat.one · Contact: <a href="mailto:support@mcat.one">support@mcat.one</a> ·
+          Last updated: April 18, 2026
         </p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="./support.html">Contact support</a>
-          <a class="btn btn-secondary" href="./index.html">Privacy policy</a>
-        </div>
-      </section>
-
-      <p class="footer">© 2026 Mcat.one / Mateusz Kania. All rights reserved.</p>
+      </footer>
     </main>
   </body>
 </html>

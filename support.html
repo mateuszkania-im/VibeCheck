@@ -2,18 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VibeCheck Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PromiseKeeper Support</title>
+    <meta name="description" content="PromiseKeeper support and contact page." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Plus+Jakarta+Sans:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --bg: #020617;
-        --surface: #0b1220;
-        --surface2: #111827;
-        --text: #e2e8f0;
-        --muted: #94a3b8;
-        --border: #1e293b;
-        --brandA: #22f5a5;
-        --brandB: #3bd1ff;
+        --ink: #1f1a17;
+        --muted: #6f645b;
+        --paper: #fff6ee;
+        --surface: rgba(255, 251, 245, 0.86);
+        --line: rgba(124, 99, 80, 0.22);
       }
 
       * {
@@ -22,48 +26,49 @@
 
       body {
         margin: 0;
-        min-height: 100vh;
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
         background:
-          radial-gradient(circle at 10% 10%, rgba(34, 245, 165, 0.14), transparent 38%),
-          radial-gradient(circle at 90% 20%, rgba(59, 209, 255, 0.14), transparent 36%),
-          var(--bg);
-        color: var(--text);
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-          "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+          radial-gradient(800px 400px at 100% 0%, rgba(234, 155, 143, 0.18), transparent 56%),
+          radial-gradient(800px 400px at 0% 0%, rgba(148, 171, 134, 0.22), transparent 52%),
+          linear-gradient(180deg, var(--paper), #f9efe3);
       }
 
-      .wrap {
-        max-width: 880px;
+      .container {
+        max-width: 900px;
         margin: 0 auto;
-        padding: 24px 16px 56px;
+        padding: 22px 16px 56px;
       }
 
       .hero,
-      .card {
-        border: 1px solid var(--border);
+      .panel {
+        border: 1px solid var(--line);
         border-radius: 20px;
         background: var(--surface);
       }
 
       .hero {
         padding: 20px;
-        background: linear-gradient(135deg, rgba(34, 245, 165, 0.1), rgba(59, 209, 255, 0.08));
       }
 
       .badge {
-        display: inline-block;
+        display: inline-flex;
         border-radius: 999px;
-        padding: 6px 10px;
+        padding: 7px 12px;
         font-size: 12px;
         font-weight: 700;
-        color: #001a11;
-        background: linear-gradient(135deg, var(--brandA), var(--brandB));
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      h1,
+      h2 {
+        font-family: "Fraunces", Georgia, serif;
       }
 
       h1 {
-        margin: 12px 0 8px;
-        font-size: 32px;
+        margin: 12px 0 10px;
+        font-size: clamp(30px, 6vw, 50px);
       }
 
       p {
@@ -75,273 +80,79 @@
       .links {
         margin-top: 14px;
         display: flex;
+        gap: 8px;
         flex-wrap: wrap;
-        gap: 10px;
       }
 
       .link {
-        border: 1px solid var(--border);
-        background: var(--surface2);
-        color: var(--text);
-        border-radius: 999px;
-        padding: 7px 12px;
         font-size: 13px;
         text-decoration: none;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 12px;
+        background: rgba(255, 255, 255, 0.72);
       }
 
-      .link:hover {
-        border-color: var(--brandB);
-      }
-
-      .card {
-        margin-top: 14px;
+      .panel {
+        margin-top: 12px;
         padding: 18px;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .field {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .field.full {
-        grid-column: 1 / -1;
-      }
-
-      label {
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      input,
-      select,
-      textarea {
-        width: 100%;
-        background: var(--surface2);
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 11px 12px;
-        font-size: 15px;
-      }
-
-      textarea {
-        min-height: 140px;
-        resize: vertical;
-      }
-
-      .actions {
+      .contact {
         margin-top: 14px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.7);
       }
 
-      button {
-        border: 0;
-        border-radius: 12px;
-        padding: 12px 16px;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-      }
-
-      .primary {
-        color: #001a11;
-        background: linear-gradient(135deg, var(--brandA), var(--brandB));
-      }
-
-      .ghost {
-        color: var(--text);
-        border: 1px solid var(--border);
-        background: var(--surface2);
-      }
-
-      .hint {
-        margin-top: 10px;
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      .success {
-        margin-top: 12px;
-        border: 1px solid rgba(34, 245, 165, 0.5);
-        background: rgba(34, 245, 165, 0.08);
-        border-radius: 12px;
-        padding: 10px 12px;
-        font-size: 14px;
-        color: #b8ffe2;
-        display: none;
+      .contact strong {
+        display: block;
+        margin-bottom: 4px;
       }
 
       .footer {
-        margin-top: 14px;
+        margin-top: 12px;
         font-size: 13px;
         color: var(--muted);
-      }
-
-      .hp {
-        position: absolute;
-        left: -9999px;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      @media (max-width: 720px) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
   <body>
-    <main class="wrap">
+    <main class="container">
       <section class="hero">
-        <div class="badge">VibeCheck Support</div>
+        <span class="badge">PromiseKeeper Support</span>
         <h1>Need help?</h1>
         <p>
-          Use the form below and we will prepare an email draft with all details.
-          This helps speed up support and bug triage.
+          Contact us for technical issues, billing questions, or TestFlight feedback.
+          We usually reply within two business days.
         </p>
         <div class="links">
           <a class="link" href="./marketing.html">Marketing</a>
           <a class="link" href="./index.html">Privacy</a>
+          <a class="link" href="./terms.html">Terms</a>
           <a class="link" href="./support.html">Support</a>
         </div>
       </section>
 
-      <section class="card">
-        <form id="support-form">
-          <div class="grid">
-            <div class="field">
-              <label for="name">Your name</label>
-              <input id="name" name="name" autocomplete="name" placeholder="Mateusz" />
-            </div>
-            <div class="field">
-              <label for="reply">Reply email</label>
-              <input id="reply" name="reply" type="email" autocomplete="email" placeholder="you@example.com" />
-            </div>
-
-            <div class="field">
-              <label for="platform">Platform</label>
-              <select id="platform" name="platform">
-                <option>iOS</option>
-                <option>Android</option>
-                <option>Web</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="version">App version (optional)</label>
-              <input id="version" name="version" placeholder="1.0.0 (build 2)" />
-            </div>
-
-            <div class="field full">
-              <label for="topic">Topic</label>
-              <select id="topic" name="topic">
-                <option>Bug report</option>
-                <option>Billing / Premium</option>
-                <option>Account / Access</option>
-                <option>Feature request</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="field full">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                placeholder="Describe what happened, expected result, and steps to reproduce."
-              ></textarea>
-            </div>
-          </div>
-
-          <input class="hp" tabindex="-1" aria-hidden="true" id="website" name="website" />
-
-          <div class="actions">
-            <button type="submit" class="primary">Create support email</button>
-            <button type="button" class="ghost" id="copy-email-btn">Copy support email</button>
-          </div>
-        </form>
-
-        <p class="hint">
-          Direct support contact: <a id="obf-email" href="#">click to reveal</a>
-        </p>
-        <div class="success" id="success-box">Email draft opened. If it did not open, copy the support address and send manually.</div>
+      <section class="panel">
+        <h2>Contact channels</h2>
+        <div class="contact">
+          <strong>Email</strong>
+          <a href="mailto:support@mcat.one">support@mcat.one</a>
+        </div>
+        <div class="contact">
+          <strong>Support subject templates</strong>
+          <p>
+            Billing: <code>PromiseKeeper billing issue</code><br />
+            Technical: <code>PromiseKeeper bug report</code><br />
+            TestFlight: <code>PromiseKeeper TestFlight feedback</code>
+          </p>
+        </div>
       </section>
 
-      <p class="footer">© 2026 Mcat.one / Mateusz Kania. All rights reserved.</p>
+      <p class="footer">© 2026 PromiseKeeper · Mcat.one</p>
     </main>
-
-    <script>
-      (function () {
-        const userCodes = [115, 117, 112, 112, 111, 114, 116];
-        const domainCodes = [109, 99, 97, 116, 46, 111, 110, 101];
-        const toText = (codes) => codes.map((c) => String.fromCharCode(c)).join('');
-        const supportEmail = `${toText(userCodes)}@${toText(domainCodes)}`;
-
-        const emailAnchor = document.getElementById('obf-email');
-        emailAnchor.textContent = supportEmail;
-        emailAnchor.href = `mailto:${supportEmail}`;
-
-        const copyBtn = document.getElementById('copy-email-btn');
-        copyBtn.addEventListener('click', async () => {
-          try {
-            await navigator.clipboard.writeText(supportEmail);
-            copyBtn.textContent = 'Copied';
-            setTimeout(() => {
-              copyBtn.textContent = 'Copy support email';
-            }, 1400);
-          } catch (error) {
-            copyBtn.textContent = supportEmail;
-          }
-        });
-
-        const form = document.getElementById('support-form');
-        const success = document.getElementById('success-box');
-        form.addEventListener('submit', (event) => {
-          event.preventDefault();
-
-          const hp = document.getElementById('website').value;
-          if (hp && hp.trim() !== '') {
-            return;
-          }
-
-          const name = document.getElementById('name').value.trim();
-          const reply = document.getElementById('reply').value.trim();
-          const platform = document.getElementById('platform').value.trim();
-          const version = document.getElementById('version').value.trim();
-          const topic = document.getElementById('topic').value.trim();
-          const message = document.getElementById('message').value.trim();
-
-          const subject = `[VibeCheck Support] ${topic} - ${platform}`;
-          const body = [
-            `Name: ${name || '-'}`,
-            `Reply email: ${reply || '-'}`,
-            `Platform: ${platform || '-'}`,
-            `App version: ${version || '-'}`,
-            `Topic: ${topic || '-'}`,
-            '',
-            'Message:',
-            message || '-',
-            '',
-            `Generated: ${new Date().toISOString()}`,
-          ].join('\n');
-
-          const mailto = `mailto:${supportEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          window.location.href = mailto;
-          success.style.display = 'block';
-        });
-      })();
-    </script>
   </body>
 </html>
