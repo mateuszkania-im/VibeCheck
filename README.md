@@ -1,19 +1,24 @@
-# PromiseKeeper Public Pages
+# VibeCheck Public Pages
 
-This repository hosts public PromiseKeeper pages for App Store metadata links.
+This repository hosts public VibeCheck pages for App Store metadata links.
 
 ## Files
 
-- `index.html` - privacy policy page
-- `terms.html` - terms of use page
-- `support.html` - support page
-- `marketing.html` - marketing / landing page
+- `index.html` - legal/support landing
+- `privacy.html` - Privacy Policy
+- `terms.html` - Terms of Use
+- `eula.html` - EULA pointer page
+- `support.html` - Support page
+- `marketing.html` - Marketing page
+- `styles.css` - shared styles
 
 ## GitHub Pages URL
 
-After enabling Pages (`Settings -> Pages -> Deploy from branch -> main / root`), pages will be available at:
+After enabling Pages (`Settings -> Pages -> Deploy from branch -> main / root`), pages are available at:
 
-- Privacy Policy URL: `https://mateuszkania-im.github.io/VibeCheck/`
-- Terms URL: `https://mateuszkania-im.github.io/VibeCheck/terms.html`
+- Landing: `https://mateuszkania-im.github.io/VibeCheck/`
+- Privacy Policy URL: `https://mateuszkania-im.github.io/VibeCheck/privacy.html`
+- Terms of Use URL: `https://mateuszkania-im.github.io/VibeCheck/terms.html`
+- EULA URL: `https://mateuszkania-im.github.io/VibeCheck/eula.html`
 - Support URL: `https://mateuszkania-im.github.io/VibeCheck/support.html`
 - Marketing URL: `https://mateuszkania-im.github.io/VibeCheck/marketing.html`
